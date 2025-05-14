@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Artifact } from './artifact';
+import { environment } from '../environments/environment';
 
 export interface Page<T> {
   content: T[];
@@ -17,7 +18,7 @@ export interface Page<T> {
   providedIn: 'root'
 })
 export class ArtifactService {
-  private apiUrl = 'http://localhost:8080/api/artifacts';
+  private apiUrl = `${environment.API_URL}/artifacts`;
 
   constructor(private http: HttpClient) {}
 
