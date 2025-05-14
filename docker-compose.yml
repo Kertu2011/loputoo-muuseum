@@ -16,7 +16,7 @@ services:
       - --entrypoints.websecure.address=:443
       - --certificatesresolvers.letsencrypt.acme.httpchallenge=true
       - --certificatesresolvers.letsencrypt.acme.httpchallenge.entrypoint=web
-      - --certificatesresolvers.letsencrypt.acme.email=your-email@example.com
+      - --certificatesresolvers.letsencrypt.acme.email=kertu.beljaev@ametikool.ee
       - --certificatesresolvers.letsencrypt.acme.storage=/data/acme.json
       - --entrypoints.web.http.redirections.entrypoint.to=websecure
       - --entrypoints.web.http.redirections.entrypoint.scheme=https
@@ -42,7 +42,7 @@ services:
     restart: unless-stopped
     labels:
       traefik.enable: "true"
-      traefik.http.routers.frontend.rule: "Host(`example.com`)"
+      traefik.http.routers.frontend.rule: "Host(`ristematalu.duckdns.org`)"
       traefik.http.routers.frontend.entrypoints: "websecure"
       traefik.http.routers.frontend.priority: "1"
       traefik.http.routers.frontend.tls.certresolver: "letsencrypt"
@@ -58,7 +58,7 @@ services:
       API_DB_HOST: mysql
     labels:
       traefik.enable: "true"
-      traefik.http.routers.api.rule: "Host(`example.com`) && PathPrefix(`/api`)"
+      traefik.http.routers.api.rule: "Host(`ristematalu.duckdns.org`) && PathPrefix(`/api`)"
       traefik.http.routers.api.priority: "10"
       traefik.http.routers.api.entrypoints: "websecure"
       traefik.http.routers.api.tls.certresolver: "letsencrypt"
